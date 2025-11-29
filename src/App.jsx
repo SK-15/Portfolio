@@ -9,7 +9,7 @@ import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Portfolio">
       <MainLayout>
         <Routes>
           <Route path="/" element={<Home />} />
