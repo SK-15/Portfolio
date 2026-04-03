@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Award } from 'lucide-react';
+import { Briefcase, GraduationCap } from 'lucide-react';
 
 const Resume = () => {
     const experiences = [
@@ -16,7 +16,7 @@ const Resume = () => {
             id: 1,
             role: 'Generative AI Developer',
             company: 'DocuSwift',
-            period: 'May 2024 - July 2025',
+            period: 'May 2024 – July 2025',
             description: 'Developed APIs using Azure Functions and deployed on Azure DevOps. Engineered RAG pipelines with Azure Cognitive Search and conducted prompt engineering for structured insights.',
             skills: ['Azure Functions', 'RAG', 'Azure Cognitive Search', 'DevOps']
         },
@@ -56,45 +56,50 @@ const Resume = () => {
 
     return (
         <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
+            <div className="max-w-5xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: -16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400"
+                    className="text-center mb-16"
                 >
-                    System <span className="text-neon-green">Logs</span>
-                </motion.h1>
+                    <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-3">Background</p>
+                    <h1 className="text-4xl md:text-5xl font-display font-bold text-ink">
+                        Experience &amp; Education
+                    </h1>
+                </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Experience Column */}
                     <div>
-                        <div className="flex items-center mb-8">
-                            <Briefcase className="text-neon-green mr-3" size={24} />
-                            <h2 className="text-2xl font-orbitron font-bold text-white">Experience</h2>
+                        <div className="flex items-center gap-2.5 mb-8">
+                            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                                <Briefcase className="text-accent" size={16} />
+                            </div>
+                            <h2 className="text-xl font-semibold text-ink">Experience</h2>
                         </div>
 
-                        <div className="space-y-8 border-l-2 border-white/10 ml-3 pl-8 relative">
+                        <div className="space-y-6 border-l-2 border-gray-200 ml-3 pl-8 relative">
                             {experiences.map((exp, index) => (
                                 <motion.div
                                     key={exp.id}
-                                    initial={{ opacity: 0, x: -20 }}
+                                    initial={{ opacity: 0, x: -16 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: index * 0.1 }}
                                     className="relative group"
                                 >
                                     {/* Timeline Dot */}
-                                    <div className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-dark-bg border-2 border-neon-green group-hover:bg-neon-green group-hover:shadow-neon transition-all duration-300" />
+                                    <div className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-bg-card border-2 border-accent/50 group-hover:border-accent group-hover:bg-accent/10 transition-all duration-300" />
 
-                                    <div className="bg-dark-surface/50 p-6 rounded-lg border border-white/5 hover:border-neon-green/30 transition-colors duration-300">
-                                        <span className="text-neon-green text-sm font-mono mb-2 block">{exp.period}</span>
-                                        <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
-                                        <h4 className="text-gray-400 mb-3">{exp.company}</h4>
-                                        <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                                    <div className="bg-bg-card p-5 rounded-xl border border-gray-200 shadow-card group-hover:shadow-card-hover group-hover:border-accent/25 transition-all duration-300">
+                                        <span className="text-accent text-xs font-semibold tracking-wide mb-1.5 block">{exp.period}</span>
+                                        <h3 className="text-base font-semibold text-ink mb-0.5">{exp.role}</h3>
+                                        <h4 className="text-ink-muted text-sm mb-3">{exp.company}</h4>
+                                        <p className="text-ink-muted text-sm mb-4 leading-relaxed">
                                             {exp.description}
                                         </p>
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-1.5">
                                             {exp.skills.map(skill => (
-                                                <span key={skill} className="px-2 py-1 text-xs font-mono text-neon-green bg-neon-green/10 rounded border border-neon-green/20">
+                                                <span key={skill} className="px-2.5 py-0.5 text-xs font-medium text-accent bg-accent/10 rounded-full border border-accent/15">
                                                     {skill}
                                                 </span>
                                             ))}
@@ -107,27 +112,29 @@ const Resume = () => {
 
                     {/* Education Column */}
                     <div>
-                        <div className="flex items-center mb-8">
-                            <GraduationCap className="text-neon-green mr-3" size={24} />
-                            <h2 className="text-2xl font-orbitron font-bold text-white">Education</h2>
+                        <div className="flex items-center gap-2.5 mb-8">
+                            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                                <GraduationCap className="text-accent" size={16} />
+                            </div>
+                            <h2 className="text-xl font-semibold text-ink">Education</h2>
                         </div>
 
-                        <div className="space-y-8 border-l-2 border-white/10 ml-3 pl-8 relative">
+                        <div className="space-y-6 border-l-2 border-gray-200 ml-3 pl-8 relative">
                             {education.map((edu, index) => (
                                 <motion.div
                                     key={edu.id}
-                                    initial={{ opacity: 0, x: 20 }}
+                                    initial={{ opacity: 0, x: 16 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: index * 0.1 + 0.3 }}
                                     className="relative group"
                                 >
                                     {/* Timeline Dot */}
-                                    <div className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-dark-bg border-2 border-neon-green group-hover:bg-neon-green group-hover:shadow-neon transition-all duration-300" />
+                                    <div className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-bg-card border-2 border-accent/50 group-hover:border-accent group-hover:bg-accent/10 transition-all duration-300" />
 
-                                    <div className="bg-dark-surface/50 p-6 rounded-lg border border-white/5 hover:border-neon-green/30 transition-colors duration-300">
-                                        <span className="text-neon-green text-sm font-mono mb-2 block">{edu.period}</span>
-                                        <h3 className="text-xl font-bold text-white mb-1">{edu.degree}</h3>
-                                        <h4 className="text-gray-400">{edu.school}</h4>
+                                    <div className="bg-bg-card p-5 rounded-xl border border-gray-200 shadow-card group-hover:shadow-card-hover group-hover:border-accent/25 transition-all duration-300">
+                                        <span className="text-accent text-xs font-semibold tracking-wide mb-1.5 block">{edu.period}</span>
+                                        <h3 className="text-base font-semibold text-ink mb-0.5">{edu.degree}</h3>
+                                        <h4 className="text-ink-muted text-sm">{edu.school}</h4>
                                     </div>
                                 </motion.div>
                             ))}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 
 import caseChatImg from '../assets/casechat.png';
 import caseSearchImg from '../assets/casesearch.png';
@@ -14,7 +14,7 @@ const Projects = () => {
             description: 'AI-powered chat system for legal documents using RAG pipeline on Azure Cognitive Search. Features optimized information extraction with curated prompts.',
             tags: ['Azure', 'RAG', 'LLM', 'Python'],
             image: caseChatImg,
-            github: '#', // Add your GitHub link here
+            github: '#',
             demo: '#'
         },
         {
@@ -23,7 +23,7 @@ const Projects = () => {
             description: 'Legal search engine for 5 lakh+ Indian judgments. Uses RAG and fine-tuned LLMs for summarization and precise case retrieval.',
             tags: ['Azure Cognitive Search', 'Fine-tuning', 'React', 'AI'],
             image: caseSearchImg,
-            github: '#', // Add your GitHub link here
+            github: '#',
             demo: '#'
         },
         {
@@ -39,56 +39,58 @@ const Projects = () => {
 
     return (
         <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
+            <div className="max-w-6xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: -16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400"
+                    className="text-center mb-16"
                 >
-                    Featured <span className="text-neon-green">Projects</span>
-                </motion.h1>
+                    <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-3">Portfolio</p>
+                    <h1 className="text-4xl md:text-5xl font-display font-bold text-ink">
+                        Featured Projects
+                    </h1>
+                </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="group relative bg-dark-surface rounded-xl overflow-hidden border border-white/5 hover:border-neon-green/50 transition-all duration-300 hover:shadow-neon"
+                            className="group bg-bg-card rounded-xl overflow-hidden border border-gray-200 shadow-card hover:shadow-card-hover hover:border-accent/30 transition-all duration-300"
                         >
-                            {/* Image Overlay */}
-                            <div className="relative h-48 overflow-hidden">
-                                <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition-colors duration-300 z-10" />
+                            {/* Image */}
+                            <div className="relative h-48 overflow-hidden bg-bg-muted">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
 
                             <div className="p-6">
-                                <h3 className="text-xl font-bold font-orbitron text-white mb-2 group-hover:text-neon-green transition-colors">
+                                <h3 className="text-lg font-semibold text-ink mb-2 group-hover:text-accent transition-colors duration-300">
                                     {project.title}
                                 </h3>
-                                <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                                <p className="text-ink-muted text-sm mb-4 line-clamp-2 leading-relaxed">
                                     {project.description}
                                 </p>
 
-                                <div className="flex flex-wrap gap-2 mb-6">
+                                <div className="flex flex-wrap gap-1.5 mb-5">
                                     {project.tags.map(tag => (
-                                        <span key={tag} className="px-2 py-1 text-xs font-mono text-neon-green bg-neon-green/10 rounded">
+                                        <span key={tag} className="px-2.5 py-0.5 text-xs font-medium text-accent bg-accent/10 rounded-full border border-accent/15">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
 
-                                <div className="flex justify-between items-center">
-                                    <a href={project.github} className="flex items-center text-sm text-gray-400 hover:text-white transition-colors">
-                                        <Github size={16} className="mr-2" /> Code
+                                <div className="flex justify-between items-center pt-2 border-t border-gray-100">
+                                    <a href={project.github} className="flex items-center text-xs text-ink-muted hover:text-ink transition-colors font-medium">
+                                        <Github size={14} className="mr-1.5" /> Code
                                     </a>
-                                    <a href={project.demo} className="flex items-center text-sm text-neon-green hover:text-white transition-colors">
-                                        <ExternalLink size={16} className="mr-2" /> Live Demo
+                                    <a href={project.demo} className="flex items-center text-xs text-accent hover:text-accent-dark transition-colors font-medium">
+                                        <ExternalLink size={14} className="mr-1.5" /> Live Demo
                                     </a>
                                 </div>
                             </div>

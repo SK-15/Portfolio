@@ -35,43 +35,49 @@ const Blogs = () => {
     return (
         <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
+                <motion.div
+                    initial={{ opacity: 0, y: -16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400"
+                    className="text-center mb-16"
                 >
-                    Latest <span className="text-neon-green">Insights</span>
-                </motion.h1>
+                    <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-3">Writing</p>
+                    <h1 className="text-4xl md:text-5xl font-display font-bold text-ink">
+                        Latest Insights
+                    </h1>
+                </motion.div>
 
-                <div className="space-y-8">
+                <div className="space-y-6">
                     {posts.map((post, index) => (
                         <motion.article
                             key={post.slug}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="group relative bg-dark-surface/50 p-8 rounded-xl border border-white/5 hover:border-neon-green/30 transition-all duration-300"
+                            className="group bg-bg-card p-8 rounded-xl border border-gray-200 shadow-card hover:shadow-card-hover hover:border-accent/30 transition-all duration-300"
                         >
-                            <div className="flex items-center gap-4 text-xs font-mono text-gray-500 mb-4">
+                            <div className="flex items-center gap-3 text-xs text-ink-muted mb-4">
                                 {post.category && (
-                                    <span className="text-neon-green bg-neon-green/10 px-2 py-1 rounded">{post.category}</span>
+                                    <span className="text-accent bg-accent/10 px-2.5 py-0.5 rounded-full font-medium border border-accent/15">{post.category}</span>
                                 )}
-                                <span className="flex items-center"><Calendar size={12} className="mr-1" /> {post.date}</span>
+                                <span className="flex items-center gap-1"><Calendar size={11} /> {post.date}</span>
                                 {post.readTime && (
-                                    <span className="flex items-center"><Clock size={12} className="mr-1" /> {post.readTime}</span>
+                                    <span className="flex items-center gap-1"><Clock size={11} /> {post.readTime}</span>
                                 )}
                             </div>
 
-                            <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-neon-green transition-colors">
+                            <h2 className="text-xl font-semibold text-ink mb-3 group-hover:text-accent transition-colors duration-300">
                                 {post.title}
                             </h2>
 
-                            <p className="text-gray-400 mb-6 leading-relaxed">
+                            <p className="text-ink-muted mb-6 leading-relaxed text-sm">
                                 {post.excerpt}
                             </p>
 
-                            <Link to={`/blogs/${post.slug}`} className="inline-flex items-center text-neon-green font-medium hover:text-white transition-colors">
-                                Read Article <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                            <Link
+                                to={`/blogs/${post.slug}`}
+                                className="inline-flex items-center text-sm text-accent font-medium hover:text-accent-dark transition-colors"
+                            >
+                                Read Article <ArrowRight size={15} className="ml-1.5 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </motion.article>
                     ))}
