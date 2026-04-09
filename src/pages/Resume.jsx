@@ -78,7 +78,7 @@ const Resume = () => {
                             <h2 className="text-xl font-semibold text-ink">Experience</h2>
                         </div>
 
-                        <div className="space-y-6 border-l-2 border-gray-200 ml-3 pl-8 relative">
+                        <div className="space-y-6 border-l-2 border-rule ml-3 pl-8 relative">
                             {experiences.map((exp, index) => (
                                 <motion.div
                                     key={exp.id}
@@ -90,7 +90,7 @@ const Resume = () => {
                                     {/* Timeline Dot */}
                                     <div className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-bg-card border-2 border-accent/50 group-hover:border-accent group-hover:bg-accent/10 transition-all duration-300" />
 
-                                    <div className="bg-bg-card p-5 rounded-xl border border-gray-200 shadow-card group-hover:shadow-card-hover group-hover:border-accent/25 transition-all duration-300">
+                                    <div className="bg-bg-card p-5 rounded-xl border border-rule shadow-card group-hover:shadow-card-hover group-hover:border-accent/25 transition-all duration-300">
                                         <span className="text-accent text-xs font-semibold tracking-wide mb-1.5 block">{exp.period}</span>
                                         <h3 className="text-base font-semibold text-ink mb-0.5">{exp.role}</h3>
                                         <h4 className="text-ink-muted text-sm mb-3">{exp.company}</h4>
@@ -119,7 +119,7 @@ const Resume = () => {
                             <h2 className="text-xl font-semibold text-ink">Education</h2>
                         </div>
 
-                        <div className="space-y-6 border-l-2 border-gray-200 ml-3 pl-8 relative">
+                        <div className="space-y-6 border-l-2 border-rule ml-3 pl-8 relative">
                             {education.map((edu, index) => (
                                 <motion.div
                                     key={edu.id}
@@ -131,7 +131,7 @@ const Resume = () => {
                                     {/* Timeline Dot */}
                                     <div className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-bg-card border-2 border-accent/50 group-hover:border-accent group-hover:bg-accent/10 transition-all duration-300" />
 
-                                    <div className="bg-bg-card p-5 rounded-xl border border-gray-200 shadow-card group-hover:shadow-card-hover group-hover:border-accent/25 transition-all duration-300">
+                                    <div className="bg-bg-card p-5 rounded-xl border border-rule shadow-card group-hover:shadow-card-hover group-hover:border-accent/25 transition-all duration-300">
                                         <span className="text-accent text-xs font-semibold tracking-wide mb-1.5 block">{edu.period}</span>
                                         <h3 className="text-base font-semibold text-ink mb-0.5">{edu.degree}</h3>
                                         <h4 className="text-ink-muted text-sm">{edu.school}</h4>

@@ -5,43 +5,46 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div className="relative min-h-[calc(100vh-64px)] flex items-center justify-center overflow-hidden">
-            {/* Subtle background texture */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_30%,rgba(106,90,205,0.07)_0%,transparent_60%)] pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(106,90,205,0.05)_0%,transparent_50%)] pointer-events-none" />
+        <div className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_25%,rgba(45,90,142,0.06)_0%,transparent_55%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_75%,rgba(232,168,56,0.05)_0%,transparent_45%)] pointer-events-none" />
 
-            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="relative z-10 max-w-[760px] mx-auto px-5 sm:px-8 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: 'easeOut' }}
                 >
-                    {/* Pill badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-widest uppercase mb-6 border border-accent/20">
-                        ML Engineer · AI Developer
+                    <div className="inline-flex items-center justify-center gap-3 mb-8 text-left sm:text-center flex-wrap">
+                        <span className="text-[11px] font-medium tracking-[0.1em] uppercase text-accent bg-accent-light px-2.5 py-1 rounded-sm">
+                            Portfolio
+                        </span>
+                        <span className="w-1 h-1 rounded-full bg-rule hidden sm:block" aria-hidden />
+                        <span className="text-[13px] text-ink-muted font-normal">Generative AI · Machine Learning</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-display font-bold text-ink mb-4 leading-tight">
-                        Saurav Kumar
+                    <h1 className="font-display text-[clamp(2rem,6vw,3.35rem)] font-semibold text-ink tracking-tight leading-[1.12] mb-6">
+                        Building scalable, reliable AI systems for <em className="not-italic text-accent">real-world</em> workflows
                     </h1>
-                    <p className="text-ink-muted text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Leveraging Generative AI to automate workflows and create predictive systems. Full-stack integration of Machine Learning models into real-world applications.
+
+                    <p className="text-[17px] sm:text-[19px] font-light text-ink-soft leading-relaxed max-w-xl mx-auto mb-10 pl-4 sm:pl-0 border-l-[3px] border-highlight sm:border-l-0 sm:border-none sm:px-4 text-left sm:text-center">
+                        Leveraging Generative AI to automate workflows and ship predictive systems — from RAG pipelines to production APIs.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
                         <Link
                             to="/projects"
-                            className="group inline-flex items-center px-7 py-3 rounded-lg bg-accent text-white font-semibold text-sm shadow-card hover:bg-accent-dark transition-all duration-300 hover:shadow-card-hover"
+                            className="group inline-flex items-center justify-center px-7 py-2.5 rounded-sm bg-ink text-bg text-[13px] font-medium tracking-wide transition-colors duration-200 hover:bg-accent"
                         >
-                            View Projects
-                            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                            View projects
+                            <ArrowRight className="ml-2 group-hover:translate-x-0.5 transition-transform" size={16} />
                         </Link>
 
                         <Link
                             to="/resume"
-                            className="inline-flex items-center px-7 py-3 rounded-lg border border-gray-300 text-ink font-semibold text-sm hover:bg-bg-muted hover:border-gray-400 transition-all duration-300"
+                            className="inline-flex items-center justify-center px-7 py-2.5 rounded-sm border border-rule text-ink text-[13px] font-medium bg-bg hover:bg-bg-warm transition-colors duration-200"
                         >
-                            Resume
+                            Résumé
                         </Link>
                     </div>
                 </motion.div>

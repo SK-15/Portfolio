@@ -58,7 +58,7 @@ const Projects = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="group bg-bg-card rounded-xl overflow-hidden border border-gray-200 shadow-card hover:shadow-card-hover hover:border-accent/30 transition-all duration-300"
+                            className="group bg-bg-card rounded-xl overflow-hidden border border-rule shadow-card hover:shadow-card-hover hover:border-accent/30 transition-all duration-300"
                         >
                             {/* Image */}
                             <div className="relative h-48 overflow-hidden bg-bg-muted">
@@ -85,7 +85,7 @@ const Projects = () => {
                                     ))}
                                 </div>
 
-                                <div className="flex justify-between items-center pt-2 border-t border-gray-100">
+                                <div className="flex justify-between items-center pt-2 border-t border-rule">
                                     <a href={project.github} className="flex items-center text-xs text-ink-muted hover:text-ink transition-colors font-medium">
                                         <Github size={14} className="mr-1.5" /> Code
                                     </a>
