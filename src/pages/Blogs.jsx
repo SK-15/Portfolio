@@ -53,7 +53,7 @@ const Blogs = () => {
                             initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="group bg-bg-card p-8 rounded-xl border border-gray-200 shadow-card hover:shadow-card-hover hover:border-accent/30 transition-all duration-300"
+                            className="group bg-bg-card p-8 rounded-xl border border-rule shadow-card hover:shadow-card-hover hover:border-accent/30 transition-all duration-300"
                         >
                             <div className="flex items-center gap-3 text-xs text-ink-muted mb-4">
                                 {post.category && (

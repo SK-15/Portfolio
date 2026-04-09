@@ -15,76 +15,85 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-bg/90 backdrop-blur-lg border-b border-gray-200">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    <Link to="/" className="flex items-center space-x-2.5 group">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center text-white font-bold text-sm font-sans shadow-sm group-hover:shadow-accent transition-all duration-300">
-                            SK
-                        </div>
-                        <span className="text-ink font-display font-semibold text-lg group-hover:text-accent transition-colors duration-300">
-                            Saurav Kumar
-                        </span>
+        <nav className="relative sticky top-0 z-50 flex items-center justify-between gap-4 px-5 sm:px-8 lg:px-10 py-4 sm:py-5 border-b border-rule bg-bg">
+            <Link to="/" className="group shrink-0" onClick={() => setIsOpen(false)}>
+                <span className="font-display text-[17px] sm:text-lg font-semibold text-ink tracking-tight">
+                    Saura<span className="text-accent">v</span> Kumar
+                </span>
+            </Link>
+
+            <div className="hidden md:flex items-center gap-8 lg:gap-10">
+                {links.map((link) => (
+                    <Link
+                        key={link.name}
+                        to={link.path}
+                        className={`relative flex items-center gap-1.5 text-[13px] font-normal tracking-wide transition-colors duration-200 pb-0.5 ${
+                            location.pathname === link.path
+                                ? 'text-ink'
+                                : 'text-ink-soft hover:text-ink'
+                        }`}
+                    >
+                        {link.icon}
+                        <span>{link.name}</span>
+                        {location.pathname === link.path && (
+                            <motion.div
+                                layoutId="nav-underline"
+                                className="absolute -bottom-1 left-0 right-0 h-px bg-accent"
+                            />
+                        )}
                     </Link>
-
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center space-x-8">
-                        {links.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className={`relative flex items-center space-x-1.5 text-sm font-medium transition-colors duration-300 pb-0.5 ${location.pathname === link.path
-                                        ? 'text-accent'
-                                        : 'text-ink-muted hover:text-ink'
-                                    }`}
-                            >
-                                {link.icon}
-                                <span>{link.name}</span>
-                                {location.pathname === link.path && (
-                                    <motion.div
-                                        layoutId="underline"
-                                        className="absolute -bottom-5 left-0 right-0 h-0.5 bg-accent rounded-full"
-                                    />
-                                )}
-                            </Link>
-                        ))}
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-ink-muted hover:text-ink focus:outline-none transition-colors"
-                        >
-                            {isOpen ? <X size={22} /> : <Menu size={22} />}
-                        </button>
-                    </div>
-                </div>
+                ))}
             </div>
 
-            {/* Mobile Menu */}
+            <a
+                href="mailto:contact@example.com"
+                className="hidden md:inline-flex text-[13px] font-medium text-bg bg-ink px-[18px] py-2 rounded-sm tracking-wide transition-colors duration-200 hover:bg-accent shrink-0"
+            >
+                Get in touch
+            </a>
+
+            <div className="md:hidden flex items-center">
+                <button
+                    type="button"
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="text-ink-soft hover:text-ink p-1 -mr-1 transition-colors"
+                    aria-expanded={isOpen}
+                    aria-label="Toggle menu"
+                >
+                    {isOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
+            </div>
+
             {isOpen && (
                 <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="md:hidden bg-bg-card border-b border-gray-200"
+                    exit={{ opacity: 0, y: -8 }}
+                    className="md:hidden absolute top-full left-0 right-0 bg-bg border-b border-rule shadow-card"
                 >
-                    <div className="px-4 pt-2 pb-4 space-y-1">
+                    <div className="px-4 py-3 space-y-0.5">
                         {links.map((link) => (
                             <Link
                                 key={link.name}
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
-                                className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${location.pathname === link.path
-                                        ? 'text-accent bg-accent/8'
-                                        : 'text-ink-muted hover:text-ink hover:bg-bg-muted'
-                                    }`}
+                                className={`flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm transition-colors ${
+                                    location.pathname === link.path
+                                        ? 'text-accent bg-accent-light/80'
+                                        : 'text-ink-soft hover:text-ink hover:bg-bg-warm'
+                                }`}
                             >
                                 {link.icon}
                                 <span>{link.name}</span>
                             </Link>
                         ))}
+                        <a
+                            href="mailto:contact@example.com"
+                            className="flex items-center justify-center mt-2 py-2.5 text-sm font-medium text-bg bg-ink rounded-sm hover:bg-accent transition-colors"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Get in touch
+                        </a>
                     </div>
                 </motion.div>
             )}

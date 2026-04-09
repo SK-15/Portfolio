@@ -7,30 +7,37 @@ export default {
     theme: {
         extend: {
             colors: {
+                // Editorial palette (warm paper + ink + blue accent)
                 accent: {
-                    DEFAULT: '#6A5ACD',   // slate blue-violet
-                    light: '#9585E0',
-                    dark: '#4E3FAA',
+                    DEFAULT: '#2d5a8e',
+                    light: '#e8f0f9',
+                    dark: '#1e4a72',
                 },
+                highlight: {
+                    DEFAULT: '#e8a838',
+                },
+                rule: '#ddd8ce',
                 bg: {
-                    DEFAULT: '#F9F7F4',   // warm off-white / cream
-                    card: '#FFFFFF',
-                    muted: '#F0EDE8',
+                    DEFAULT: '#faf8f4',
+                    warm: '#f2ede4',
+                    card: '#ffffff',
+                    muted: '#f2ede4',
                 },
                 ink: {
-                    DEFAULT: '#1A1A2E',   // near-black
-                    muted: '#6B7280',     // gray-500
-                    faint: '#9CA3AF',     // gray-400
+                    DEFAULT: '#1a1814',
+                    soft: '#4a4640',
+                    muted: '#8a857e',
+                    faint: '#9a9590',
                 },
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
+                sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
                 display: ['"Playfair Display"', 'Georgia', 'serif'],
             },
             boxShadow: {
-                'card': '0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05)',
-                'card-hover': '0 4px 16px rgba(106,90,205,0.12), 0 2px 6px rgba(0,0,0,0.06)',
-                'accent': '0 0 0 3px rgba(106,90,205,0.2)',
+                'card': '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
+                'card-hover': '0 4px 16px rgba(45,90,142,0.1), 0 2px 6px rgba(0,0,0,0.05)',
+                'accent': '0 0 0 3px rgba(45,90,142,0.18)',
             },
             animation: {
                 'fade-up': 'fadeUp 0.6s ease both',
