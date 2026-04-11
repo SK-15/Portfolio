@@ -1,8 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
+    const navigate = useNavigate();
+
+    const scrollToSection = (sectionId) => {
+        if (window.location.pathname.replace(/\/Portfolio/, '') === '/') {
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            navigate('/');
+            setTimeout(() => {
+                document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+        }
+    };
+
     return (
         <footer className="bg-bg-warm border-t border-rule py-12 sm:py-14 mt-auto">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center gap-5">
@@ -12,28 +25,25 @@ const Footer = () => {
                 </div>
 
                 <div className="flex justify-center gap-8">
-                    <Link to="/projects" className="text-[13px] text-ink-muted hover:text-ink transition-colors">
+                    <button onClick={() => scrollToSection('projects')} className="text-[13px] text-ink-muted hover:text-ink transition-colors bg-transparent border-none cursor-pointer">
                         Projects
-                    </Link>
-                    <Link to="/resume" className="text-[13px] text-ink-muted hover:text-ink transition-colors">
+                    </button>
+                    <button onClick={() => scrollToSection('resume')} className="text-[13px] text-ink-muted hover:text-ink transition-colors bg-transparent border-none cursor-pointer">
                         Resume
-                    </Link>
+                    </button>
                     <Link to="/blogs" className="text-[13px] text-ink-muted hover:text-ink transition-colors">
                         Writing
                     </Link>
                 </div>
 
                 <div className="flex justify-center gap-5 pt-1">
-                    <a href="#" className="text-ink-faint hover:text-accent transition-colors duration-200" aria-label="GitHub">
+                    <a href="https://github.com/sauravkumar" target="_blank" rel="noopener noreferrer" className="text-ink-faint hover:text-accent transition-colors duration-200" aria-label="GitHub">
                         <Github size={18} />
                     </a>
-                    <a href="#" className="text-ink-faint hover:text-accent transition-colors duration-200" aria-label="LinkedIn">
+                    <a href="https://linkedin.com/in/sauravkumar" target="_blank" rel="noopener noreferrer" className="text-ink-faint hover:text-accent transition-colors duration-200" aria-label="LinkedIn">
                         <Linkedin size={18} />
                     </a>
-                    <a href="#" className="text-ink-faint hover:text-accent transition-colors duration-200" aria-label="Twitter">
-                        <Twitter size={18} />
-                    </a>
-                    <a href="mailto:contact@example.com" className="text-ink-faint hover:text-accent transition-colors duration-200" aria-label="Email">
+                    <a href="mailto:sauravkumar585@gmail.com" className="text-ink-faint hover:text-accent transition-colors duration-200" aria-label="Email">
                         <Mail size={18} />
                     </a>
                 </div>

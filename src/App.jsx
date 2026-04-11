@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import Resume from './pages/Resume';
+import MainPage from './pages/MainPage';
 import Blogs from './pages/Blogs';
 import BlogPost from './pages/BlogPost';
 
@@ -12,9 +10,7 @@ function App() {
     <Router basename="/Portfolio">
       <MainLayout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/resume" element={<Resume />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:slug" element={<BlogPost />} />
         </Routes>
