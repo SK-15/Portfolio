@@ -117,8 +117,8 @@ const Navbar = () => {
             </div>
 
             <a
-                href="/Portfolio/Saurav_Kumar_Resume.pdf"
-                download="Saurav_Kumar_Resume.pdf"
+                href="/Portfolio/Saurav_Kumar_GENAI_Resume.pdf"
+                download="Saurav_Kumar_GENAI_Resume.pdf"
                 className="hidden md:inline-flex items-center gap-1.5 text-[13px] font-medium text-bg bg-ink px-[18px] py-2 rounded-sm tracking-wide transition-colors duration-200 hover:bg-accent shrink-0"
             >
                 <Download size={14} />
@@ -176,8 +176,8 @@ const Navbar = () => {
                             )
                         ))}
                         <a
-                            href="/Portfolio/Saurav_Kumar_Resume.pdf"
-                            download="Saurav_Kumar_Resume.pdf"
+                            href="/Portfolio/Saurav_Kumar_GENAI_Resume.pdf"
+                            download="Saurav_Kumar_GENAI_Resume.pdf"
                             className="flex items-center justify-center gap-2 mt-2 py-2.5 text-sm font-medium text-bg bg-ink rounded-sm hover:bg-accent transition-colors"
                             onClick={() => setIsOpen(false)}
                         >
