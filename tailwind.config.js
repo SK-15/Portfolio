@@ -9,12 +9,12 @@ export default {
             colors: {
                 // Editorial palette (warm paper + ink + blue accent)
                 accent: {
-                    DEFAULT: '#2d5a8e',
-                    light: '#e8f0f9',
-                    dark: '#1e4a72',
+                    DEFAULT: '#6b8c6e',
+                    light: '#dce8dc',
+                    dark: '#4a6b4d',
                 },
                 highlight: {
-                    DEFAULT: '#e8a838',
+                    DEFAULT: '#c8a97e',
                 },
                 rule: '#ddd8ce',
                 bg: {
