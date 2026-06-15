@@ -177,7 +177,7 @@ const ResumeSection = () => {
                     viewport={{ once: true, margin: '-80px' }}
                     className="text-center mb-16"
                 >
-                    <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-3">Background</p>
+                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// experience &amp; education</p>
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-ink">
                         Experience &amp; Education
                     </h2>
@@ -209,12 +209,15 @@ const ResumeSection = () => {
                                         <h4 className="text-base font-semibold text-ink mb-0.5">{exp.role}</h4>
                                         <p className="text-ink-muted text-sm mb-3">{exp.company}</p>
                                         <p className="text-ink-muted text-sm mb-4 leading-relaxed">{exp.description}</p>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {exp.skills.map(skill => (
-                                                <span key={skill} className="px-2.5 py-0.5 text-xs font-medium text-accent bg-accent/10 rounded-full border border-accent/15">
-                                                    {skill}
-                                                </span>
+                                        <div className="font-mono text-[11px] leading-relaxed break-words">
+                                            <span className="text-code-punc">skills: [</span>
+                                            {exp.skills.map((skill, i) => (
+                                                <React.Fragment key={skill}>
+                                                    <span className="text-code-string">"{skill}"</span>
+                                                    {i < exp.skills.length - 1 && <span className="text-code-punc">, </span>}
+                                                </React.Fragment>
                                             ))}
+                                            <span className="text-code-punc">]</span>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -298,7 +301,7 @@ const ProjectsSection = () => {
                     viewport={{ once: true, margin: '-80px' }}
                     className="text-center mb-16"
                 >
-                    <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-3">Portfolio</p>
+                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// featured projects</p>
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-ink">
                         Featured Projects
                     </h2>
@@ -330,12 +333,15 @@ const ProjectsSection = () => {
                                     {project.description}
                                 </p>
 
-                                <div className="flex flex-wrap gap-1.5 mb-5">
-                                    {project.tags.map(tag => (
-                                        <span key={tag} className="px-2.5 py-0.5 text-xs font-medium text-accent bg-accent/10 rounded-full border border-accent/15">
-                                            {tag}
-                                        </span>
+                                <div className="font-mono text-[11px] leading-relaxed mb-5 break-words">
+                                    <span className="text-code-punc">[</span>
+                                    {project.tags.map((tag, i) => (
+                                        <React.Fragment key={tag}>
+                                            <span className="text-code-string">"{tag}"</span>
+                                            {i < project.tags.length - 1 && <span className="text-code-punc">, </span>}
+                                        </React.Fragment>
                                     ))}
+                                    <span className="text-code-punc">]</span>
                                 </div>
 
                                 <div className="flex justify-between items-center pt-2 border-t border-rule">

@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Code, User, FileText, BookOpen, Download } from 'lucide-react';
+import { Menu, X, Code, User, FileText, BookOpen, Download, Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
+    const [isDark, setIsDark] = useState(() =>
+        typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+    );
     const location = useLocation();
     const navigate = useNavigate();
+
+    const toggleTheme = () => {
+        const next = !isDark;
+        setIsDark(next);
+        document.documentElement.classList.toggle('dark', next);
+        document.documentElement.style.colorScheme = next ? 'dark' : 'light';
+        try { localStorage.setItem('theme', next ? 'dark' : 'light'); } catch (e) {}
+    };
 
     const isMainPage = location.pathname === '/';
 
@@ -116,16 +127,35 @@ const Navbar = () => {
                 ))}
             </div>
 
-            <a
-                href="/Portfolio/Saurav_Kumar_GENAI_Resume.pdf"
-                download="Saurav_Kumar_GENAI_Resume.pdf"
-                className="hidden md:inline-flex items-center gap-1.5 text-[13px] font-medium text-bg bg-ink px-[18px] py-2 rounded-sm tracking-wide transition-colors duration-200 hover:bg-accent shrink-0"
-            >
-                <Download size={14} />
-                Resume
-            </a>
+            <div className="hidden md:flex items-center gap-3 shrink-0">
+                <button
+                    type="button"
+                    onClick={toggleTheme}
+                    className="flex items-center justify-center w-9 h-9 rounded-sm text-ink-soft hover:text-ink hover:bg-bg-warm transition-colors cursor-pointer bg-transparent border-none"
+                    aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                    {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
 
-            <div className="md:hidden flex items-center">
+                <a
+                    href="/Portfolio/Saurav_Kumar_GENAI_Resume.pdf"
+                    download="Saurav_Kumar_GENAI_Resume.pdf"
+                    className="inline-flex items-center gap-1.5 text-[13px] font-medium text-bg bg-ink px-[18px] py-2 rounded-sm tracking-wide transition-colors duration-200 hover:bg-accent"
+                >
+                    <Download size={14} />
+                    Resume
+                </a>
+            </div>
+
+            <div className="md:hidden flex items-center gap-1">
+                <button
+                    type="button"
+                    onClick={toggleTheme}
+                    className="text-ink-soft hover:text-ink p-1 transition-colors bg-transparent border-none cursor-pointer"
+                    aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                    {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
                 <button
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}

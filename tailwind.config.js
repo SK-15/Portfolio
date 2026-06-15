@@ -7,36 +7,37 @@ export default {
     theme: {
         extend: {
             colors: {
-                // Editorial palette (warm paper + ink + blue accent)
+                // Semantic tokens — values defined as CSS vars in index.css
+                // (light in :root, dark under .dark) so the theme swaps wholesale.
                 accent: {
-                    DEFAULT: '#6b8c6e',
-                    light: '#dce8dc',
-                    dark: '#4a6b4d',
+                    DEFAULT: 'var(--accent)',
+                    light: 'var(--accent-light)',
+                    dark: 'var(--accent-dark)',
                 },
                 highlight: {
-                    DEFAULT: '#c8a97e',
+                    DEFAULT: 'var(--highlight)',
                 },
-                rule: '#ddd8ce',
+                rule: 'var(--rule)',
                 bg: {
-                    DEFAULT: '#faf8f4',
-                    warm: '#f2ede4',
-                    card: '#ffffff',
-                    muted: '#f2ede4',
+                    DEFAULT: 'var(--bg)',
+                    warm: 'var(--bg-warm)',
+                    card: 'var(--bg-card)',
+                    muted: 'var(--bg-muted)',
                 },
                 ink: {
-                    DEFAULT: '#1a1814',
-                    soft: '#4a4640',
-                    muted: '#8a857e',
-                    faint: '#9a9590',
+                    DEFAULT: 'var(--ink)',
+                    soft: 'var(--ink-soft)',
+                    muted: 'var(--ink-muted)',
+                    faint: 'var(--ink-faint)',
                 },
-                // Syntax highlight (warm light theme)
+                // Syntax highlight
                 code: {
-                    keyword: '#4a6b4d',
-                    string: '#a8743f',
-                    key: '#4a4640',
-                    punc: '#9a9590',
-                    comment: '#8a857e',
-                    fn: '#6b8c6e',
+                    keyword: 'var(--code-keyword)',
+                    string: 'var(--code-string)',
+                    key: 'var(--code-key)',
+                    punc: 'var(--code-punc)',
+                    comment: 'var(--code-comment)',
+                    fn: 'var(--code-fn)',
                 },
             },
             fontFamily: {
@@ -46,8 +47,8 @@ export default {
             },
             boxShadow: {
                 'card': '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
-                'card-hover': '0 4px 16px rgba(45,90,142,0.1), 0 2px 6px rgba(0,0,0,0.05)',
-                'accent': '0 0 0 3px rgba(45,90,142,0.18)',
+                'card-hover': '0 4px 16px rgba(107,140,110,0.12), 0 2px 6px rgba(0,0,0,0.05)',
+                'accent': '0 0 0 3px rgba(107,140,110,0.18)',
             },
             animation: {
                 'fade-up': 'fadeUp 0.6s ease both',

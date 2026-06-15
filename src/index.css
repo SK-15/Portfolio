@@ -2,18 +2,58 @@
 @plugin "@tailwindcss/typography";
 @config "../tailwind.config.js";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme (warm paper) */
 :root {
-  color-scheme: light;
+  --accent: #6b8c6e;
+  --accent-light: #dce8dc;
+  --accent-dark: #4a6b4d;
+  --highlight: #c8a97e;
+  --rule: #ddd8ce;
+  --bg: #faf8f4;
+  --bg-warm: #f2ede4;
+  --bg-card: #ffffff;
+  --bg-muted: #f2ede4;
   --ink: #1a1814;
   --ink-soft: #4a4640;
-  --paper: #faf8f4;
-  --accent: #6b8c6e;
-  --rule: #ddd8ce;
+  --ink-muted: #8a857e;
+  --ink-faint: #9a9590;
+  --code-keyword: #4a6b4d;
+  --code-string: #a8743f;
+  --code-key: #4a4640;
+  --code-punc: #9a9590;
+  --code-comment: #8a857e;
+  --code-fn: #6b8c6e;
+}
+
+/* Dark theme (IDE) */
+.dark {
+  --accent: #8ec07c;
+  --accent-light: #1f2a22;
+  --accent-dark: #a8c9a0;
+  --highlight: #d9b88a;
+  --rule: #2a313a;
+  --bg: #0d1117;
+  --bg-warm: #161b22;
+  --bg-card: #161b22;
+  --bg-muted: #1c2128;
+  --ink: #e6edf3;
+  --ink-soft: #adbac7;
+  --ink-muted: #768390;
+  --ink-faint: #636e7b;
+  --code-keyword: #8ec07c;
+  --code-string: #d9a05b;
+  --code-key: #adbac7;
+  --code-punc: #768390;
+  --code-comment: #636e7b;
+  --code-fn: #8ec07c;
 }
 
 body {
   @apply bg-bg text-ink font-sans font-light overflow-x-hidden antialiased;
   line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom Scrollbar */
