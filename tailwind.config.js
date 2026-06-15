@@ -29,10 +29,20 @@ export default {
                     muted: '#8a857e',
                     faint: '#9a9590',
                 },
+                // Syntax highlight (warm light theme)
+                code: {
+                    keyword: '#4a6b4d',
+                    string: '#a8743f',
+                    key: '#4a4640',
+                    punc: '#9a9590',
+                    comment: '#8a857e',
+                    fn: '#6b8c6e',
+                },
             },
             fontFamily: {
                 sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
                 display: ['"Playfair Display"', 'Georgia', 'serif'],
+                mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
             },
             boxShadow: {
                 'card': '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
@@ -41,11 +51,16 @@ export default {
             },
             animation: {
                 'fade-up': 'fadeUp 0.6s ease both',
+                'blink': 'blink 1.1s step-end infinite',
             },
             keyframes: {
                 fadeUp: {
                     '0%': { opacity: '0', transform: 'translateY(16px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
+                blink: {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0' },
                 }
             }
         },
