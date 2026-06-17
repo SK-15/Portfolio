@@ -44,45 +44,44 @@ const HomeSection = () => (
                             <span className="w-3 h-3 rounded-full bg-[#e06c5a]" aria-hidden />
                             <span className="w-3 h-3 rounded-full bg-[#e0b44a]" aria-hidden />
                             <span className="w-3 h-3 rounded-full bg-[#6b8c6e]" aria-hidden />
-                            <span className="ml-3 font-mono text-[12px] text-ink-muted">saurav.jsx</span>
+                            <span className="ml-3 font-mono text-[12px] text-ink-muted">saurav.py</span>
                         </div>
 
                         {/* Code body */}
                         <div className="px-6 py-5 font-mono text-[15px] sm:text-[17px] leading-loose">
                             <CodeLine n={1}>
-                                <span className="text-code-comment">{'// building real-world AI systems'}</span>
+                                <span className="text-code-comment"># building real-world AI systems</span>
                             </CodeLine>
                             <CodeLine n={2}>
-                                <span className="text-code-keyword">const </span>
                                 <span className="text-ink">saurav</span>
                                 <span className="text-code-punc"> = {'{'}</span>
                             </CodeLine>
                             <CodeLine n={3}>
-                                {'  '}<span className="text-code-key">role</span>
+                                {'    '}<span className="text-code-string">"role"</span>
                                 <span className="text-code-punc">: </span>
                                 <span className="text-code-string">"ML Engineer"</span>
                                 <span className="text-code-punc">,</span>
                             </CodeLine>
                             <CodeLine n={4}>
-                                {'  '}<span className="text-code-key">focus</span>
+                                {'    '}<span className="text-code-string">"focus"</span>
                                 <span className="text-code-punc">: </span>
                                 <span className="text-code-string">"Generative AI"</span>
                                 <span className="text-code-punc">,</span>
                             </CodeLine>
                             <CodeLine n={5}>
-                                {'  '}<span className="text-code-key">stack</span>
+                                {'    '}<span className="text-code-string">"stack"</span>
                                 <span className="text-code-punc">: [</span>
                                 <span className="text-code-string">"RAG"</span>
                                 <span className="text-code-punc">, </span>
                                 <span className="text-code-string">"LLM"</span>
                                 <span className="text-code-punc">, </span>
-                                <span className="text-code-string">"Azure"</span>
+                                <span className="text-code-string">"Agentic AI"</span>
                                 <span className="text-code-punc">],</span>
                             </CodeLine>
                             <CodeLine n={6}>
-                                {'  '}<span className="text-code-key">ships</span>
+                                {'    '}<span className="text-code-string">"ships"</span>
                                 <span className="text-code-punc">: </span>
-                                <span className="text-code-string">"RAG pipelines → production APIs"</span>
+                                <span className="text-code-string">"Agents → production APIs"</span>
                             </CodeLine>
                             <CodeLine n={7}>
                                 <span className="text-code-punc">{'}'}</span>
