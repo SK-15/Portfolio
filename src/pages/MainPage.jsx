@@ -10,7 +10,7 @@ import fundamentalInvestingImg from '../assets/fundamental_investing.png';
 /* ─── Home Section ──────────────────────────────────────────────────── */
 const CodeLine = ({ n, children }) => (
     <div className="flex">
-        <span className="select-none w-8 shrink-0 pr-3 text-right text-code-punc/60 tabular-nums">{n}</span>
+        <span className="select-none w-9 shrink-0 pr-4 text-right text-code-punc/60 tabular-nums">{n}</span>
         <span className="flex-1 whitespace-pre-wrap">{children}</span>
     </div>
 );
@@ -20,7 +20,7 @@ const HomeSection = () => (
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_25%,rgba(107,140,110,0.06)_0%,transparent_55%)] pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_75%,rgba(200,169,126,0.05)_0%,transparent_45%)] pointer-events-none" />
 
-        <div className="relative z-10 w-full max-w-[960px] mx-auto px-5 sm:px-8">
+        <div className="relative z-10 w-full max-w-[1100px] mx-auto px-5 sm:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ const HomeSection = () => (
                     <img
                         src={`${import.meta.env.BASE_URL}profile.jpg`}
                         alt="Saurav Kumar"
-                        className="w-40 h-48 md:w-48 md:h-60 object-cover rounded-xl border border-rule shadow-card"
+                        className="w-52 h-64 md:w-64 md:h-80 object-cover rounded-xl border border-rule shadow-card"
                     />
                 </div>
 
@@ -48,7 +48,7 @@ const HomeSection = () => (
                         </div>
 
                         {/* Code body */}
-                        <div className="px-4 py-4 font-mono text-[13px] sm:text-[14px] leading-relaxed">
+                        <div className="px-6 py-5 font-mono text-[15px] sm:text-[17px] leading-loose">
                             <CodeLine n={1}>
                                 <span className="text-code-comment">{'// building real-world AI systems'}</span>
                             </CodeLine>
