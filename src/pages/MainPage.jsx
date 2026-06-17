@@ -25,14 +25,14 @@ const HomeSection = () => (
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
+                className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12"
             >
                 {/* Profile photo */}
                 <div className="shrink-0">
                     <img
                         src={`${import.meta.env.BASE_URL}profile.jpg`}
                         alt="Saurav Kumar"
-                        className="w-52 h-64 md:w-64 md:h-80 object-cover rounded-xl border border-rule shadow-card"
+                        className="w-52 h-64 md:w-64 md:h-[19.5rem] object-cover rounded-xl border border-rule shadow-card"
                     />
                 </div>
 
