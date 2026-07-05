@@ -7,7 +7,7 @@ import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
-    <Router basename="/Portfolio">
+    <Router basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
       <MainLayout>
         <Routes>
           <Route path="/" element={<MainPage />} />
