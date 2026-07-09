@@ -3,9 +3,16 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import matter from 'gray-matter';
+import useSEO from '../hooks/useSEO';
 
 const Blogs = () => {
     const [posts, setPosts] = useState([]);
+
+    useSEO({
+        title: 'Writing — Saurav Kumar',
+        description: 'Articles on Generative AI, recommendation systems, and machine learning engineering by Saurav Kumar.',
+        path: '/blogs',
+    });
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -69,7 +76,7 @@ const Blogs = () => {
                                 {post.title}
                             </h2>
 
-                            <p className="text-ink-muted mb-6 leading-relaxed text-sm">
+                            <p className="text-ink-soft mb-6 leading-relaxed text-sm">
                                 {post.excerpt}
                             </p>
 

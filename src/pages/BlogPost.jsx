@@ -4,11 +4,19 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import matter from 'gray-matter';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import useSEO from '../hooks/useSEO';
 
 const BlogPost = () => {
     const { slug } = useParams();
     const [content, setContent] = useState('');
     const [meta, setMeta] = useState({});
+
+    useSEO({
+        title: meta.title ? `${meta.title} — Saurav Kumar` : 'Writing — Saurav Kumar',
+        description: meta.excerpt,
+        path: `/blogs/${slug}`,
+        type: 'article',
+    });
 
     useEffect(() => {
         const fetchPost = async () => {
