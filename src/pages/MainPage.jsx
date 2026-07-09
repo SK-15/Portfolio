@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Briefcase, GraduationCap, ExternalLink, Github } from 'lucide-react';
+import { ArrowRight, Briefcase, GraduationCap, ExternalLink, Github, Cpu, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import useSEO from '../hooks/useSEO';
 
 import caseChatImg from '../assets/casechat.png';
 import caseSearchImg from '../assets/casesearch.png';
@@ -15,6 +16,12 @@ const CodeLine = ({ n, children }) => (
     </div>
 );
 
+const Chip = ({ children }) => (
+    <span className="inline-block text-[11px] font-medium text-ink-soft bg-bg-warm border border-rule rounded-full px-2.5 py-1">
+        {children}
+    </span>
+);
+
 const HomeSection = () => (
     <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_25%,rgba(107,140,110,0.06)_0%,transparent_55%)] pointer-events-none" />
@@ -25,7 +32,7 @@ const HomeSection = () => (
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12"
+                className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
             >
                 {/* Profile photo */}
                 <div className="shrink-0">
@@ -36,8 +43,18 @@ const HomeSection = () => (
                     />
                 </div>
 
-                {/* Editor window */}
+                {/* Text + editor window */}
                 <div className="flex-1 w-full min-w-0">
+                    <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">
+                        ML Engineer · Generative AI
+                    </p>
+                    <h1 className="font-display text-[clamp(2.1rem,5vw,3.4rem)] font-semibold text-ink tracking-tight leading-[1.08] mb-3">
+                        Saurav Kumar
+                    </h1>
+                    <p className="text-[15px] sm:text-[17px] text-ink-soft leading-relaxed mb-7 max-w-[52ch]">
+                        I build RAG pipelines, AI agents, and recommendation systems that make it to production — not just to a notebook.
+                    </p>
+
                     <div className="rounded-xl border border-rule bg-bg-card shadow-card overflow-hidden">
                         {/* Title bar */}
                         <div className="flex items-center gap-2 px-4 py-2.5 border-b border-rule bg-bg-warm">
@@ -48,7 +65,7 @@ const HomeSection = () => (
                         </div>
 
                         {/* Code body */}
-                        <div className="px-6 py-5 font-mono text-[15px] sm:text-[17px] leading-loose">
+                        <div className="px-6 py-5 font-mono text-[13px] sm:text-[14px] leading-loose">
                             <CodeLine n={1}>
                                 <span className="text-code-comment"># building real-world AI systems</span>
                             </CodeLine>
@@ -108,6 +125,20 @@ const HomeSection = () => (
                         >
                             ./resume
                         </a>
+
+                        <span className="hidden sm:block w-px h-6 bg-rule mx-1" aria-hidden />
+
+                        <div className="flex items-center justify-center gap-4">
+                            <a href="https://github.com/SK-15" target="_blank" rel="noopener noreferrer" className="text-ink-muted hover:text-accent transition-colors duration-200" aria-label="GitHub">
+                                <Github size={18} />
+                            </a>
+                            <a href="https://www.linkedin.com/in/sauravkumar1503/" target="_blank" rel="noopener noreferrer" className="text-ink-muted hover:text-accent transition-colors duration-200" aria-label="LinkedIn">
+                                <Linkedin size={18} />
+                            </a>
+                            <a href="mailto:sauravkumar585@gmail.com" className="text-ink-muted hover:text-accent transition-colors duration-200" aria-label="Email">
+                                <Mail size={18} />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </motion.div>
@@ -152,6 +183,12 @@ const ResumeSection = () => {
         }
     ];
 
+    const skillGroups = [
+        { label: 'Generative AI', items: ['RAG', 'LLM Fine-tuning', 'Agentic AI', 'Prompt Engineering'] },
+        { label: 'Cloud & MLOps', items: ['Azure Functions', 'Azure Cognitive Search', 'Azure DevOps', 'Production APIs'] },
+        { label: 'ML & Data', items: ['Python', 'Recommendation Systems', 'Machine Learning', 'Visualization'] },
+    ];
+
     const education = [
         {
             id: 1,
@@ -176,7 +213,7 @@ const ResumeSection = () => {
                     viewport={{ once: true, margin: '-80px' }}
                     className="text-center mb-16"
                 >
-                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// experience &amp; education</p>
+                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// 4 roles · IIT Madras · 2022 – present</p>
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-ink">
                         Experience &amp; Education
                     </h2>
@@ -207,16 +244,9 @@ const ResumeSection = () => {
                                         <span className="text-accent text-xs font-semibold tracking-wide mb-1.5 block">{exp.period}</span>
                                         <h4 className="text-base font-semibold text-ink mb-0.5">{exp.role}</h4>
                                         <p className="text-ink-muted text-sm mb-3">{exp.company}</p>
-                                        <p className="text-ink-muted text-sm mb-4 leading-relaxed">{exp.description}</p>
-                                        <div className="font-mono text-[11px] leading-relaxed break-words">
-                                            <span className="text-code-punc">skills: [</span>
-                                            {exp.skills.map((skill, i) => (
-                                                <React.Fragment key={skill}>
-                                                    <span className="text-code-string">"{skill}"</span>
-                                                    {i < exp.skills.length - 1 && <span className="text-code-punc">, </span>}
-                                                </React.Fragment>
-                                            ))}
-                                            <span className="text-code-punc">]</span>
+                                        <p className="text-ink-soft text-sm mb-4 leading-relaxed">{exp.description}</p>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {exp.skills.map(skill => <Chip key={skill}>{skill}</Chip>)}
                                         </div>
                                     </div>
                                 </motion.div>
@@ -252,6 +282,30 @@ const ResumeSection = () => {
                                 </motion.div>
                             ))}
                         </div>
+
+                        {/* Core skills */}
+                        <div className="flex items-center gap-2.5 mt-12 mb-8">
+                            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                                <Cpu className="text-accent" size={16} />
+                            </div>
+                            <h3 className="text-xl font-semibold text-ink">Core Skills</h3>
+                        </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 16 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-60px' }}
+                            className="bg-bg-card p-5 rounded-xl border border-rule shadow-card space-y-4"
+                        >
+                            {skillGroups.map(group => (
+                                <div key={group.label}>
+                                    <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-ink-muted mb-2">{group.label}</p>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {group.items.map(item => <Chip key={item}>{item}</Chip>)}
+                                    </div>
+                                </div>
+                            ))}
+                        </motion.div>
                     </div>
                 </div>
             </div>
@@ -268,8 +322,8 @@ const ProjectsSection = () => {
             description: 'AI-powered chat system for legal documents using RAG pipeline on Azure Cognitive Search. Features optimized information extraction with curated prompts.',
             tags: ['Azure', 'RAG', 'LLM', 'Python'],
             image: caseChatImg,
-            github: '#',
-            demo: '#'
+            github: null,
+            demo: null
         },
         {
             id: 2,
@@ -277,8 +331,8 @@ const ProjectsSection = () => {
             description: 'Legal search engine for 5 lakh+ Indian judgments. Uses RAG and fine-tuned LLMs for summarization and precise case retrieval.',
             tags: ['Azure Cognitive Search', 'Fine-tuning', 'React', 'AI'],
             image: caseSearchImg,
-            github: '#',
-            demo: '#'
+            github: null,
+            demo: null
         },
         {
             id: 3,
@@ -286,8 +340,9 @@ const ProjectsSection = () => {
             description: 'Investment strategy application analyzing technical indicators and fundamental data. Filed a US patent for this innovative concept.',
             tags: ['Fintech', 'Machine Learning', 'Data Analysis'],
             image: fundamentalInvestingImg,
-            github: '#',
-            demo: '#'
+            github: null,
+            demo: null,
+            note: 'US patent filed'
         }
     ];
 
@@ -300,7 +355,7 @@ const ProjectsSection = () => {
                     viewport={{ once: true, margin: '-80px' }}
                     className="text-center mb-16"
                 >
-                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// featured projects</p>
+                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// 3 shipped · 1 US patent filed</p>
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-ink">
                         Featured Projects
                     </h2>
@@ -328,29 +383,31 @@ const ProjectsSection = () => {
                                 <h3 className="text-lg font-semibold text-ink mb-2 group-hover:text-accent transition-colors duration-300">
                                     {project.title}
                                 </h3>
-                                <p className="text-ink-muted text-sm mb-4 line-clamp-2 leading-relaxed">
+                                <p className="text-ink-soft text-sm mb-4 line-clamp-3 leading-relaxed">
                                     {project.description}
                                 </p>
 
-                                <div className="font-mono text-[11px] leading-relaxed mb-5 break-words">
-                                    <span className="text-code-punc">[</span>
-                                    {project.tags.map((tag, i) => (
-                                        <React.Fragment key={tag}>
-                                            <span className="text-code-string">"{tag}"</span>
-                                            {i < project.tags.length - 1 && <span className="text-code-punc">, </span>}
-                                        </React.Fragment>
-                                    ))}
-                                    <span className="text-code-punc">]</span>
+                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                    {project.tags.map(tag => <Chip key={tag}>{tag}</Chip>)}
                                 </div>
 
-                                <div className="flex justify-between items-center pt-2 border-t border-rule">
-                                    <a href={project.github} className="flex items-center text-xs text-ink-muted hover:text-ink transition-colors font-medium">
-                                        <Github size={14} className="mr-1.5" /> Code
-                                    </a>
-                                    <a href={project.demo} className="flex items-center text-xs text-accent hover:text-accent-dark transition-colors font-medium">
-                                        <ExternalLink size={14} className="mr-1.5" /> Live Demo
-                                    </a>
-                                </div>
+                                {(project.github || project.demo || project.note) && (
+                                    <div className="flex justify-between items-center gap-4 pt-3 border-t border-rule">
+                                        {project.note && (
+                                            <span className="text-xs text-highlight font-medium">{project.note}</span>
+                                        )}
+                                        {project.github && (
+                                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-xs text-ink-muted hover:text-ink transition-colors font-medium">
+                                                <Github size={14} className="mr-1.5" /> Code
+                                            </a>
+                                        )}
+                                        {project.demo && (
+                                            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center text-xs text-accent hover:text-accent-dark transition-colors font-medium">
+                                                <ExternalLink size={14} className="mr-1.5" /> Live Demo
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                         </motion.div>
                     ))}
@@ -361,12 +418,20 @@ const ProjectsSection = () => {
 };
 
 /* ─── Main Page ──────────────────────────────────────────────────────── */
-const MainPage = () => (
-    <>
-        <HomeSection />
-        <ResumeSection />
-        <ProjectsSection />
-    </>
-);
+const MainPage = () => {
+    useSEO({
+        title: 'Saurav Kumar — ML Engineer · Generative AI',
+        description: 'Saurav Kumar is an ML Engineer specializing in Generative AI — RAG pipelines, AI agents, recommendation systems, and production ML APIs on Azure.',
+        path: '/',
+    });
+
+    return (
+        <>
+            <HomeSection />
+            <ResumeSection />
+            <ProjectsSection />
+        </>
+    );
+};
 
 export default MainPage;

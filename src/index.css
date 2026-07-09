@@ -51,7 +51,7 @@
 }
 
 body {
-  @apply bg-bg text-ink font-sans font-light overflow-x-hidden antialiased;
+  @apply bg-bg text-ink font-sans font-normal overflow-x-hidden antialiased;
   line-height: 1.5;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
