@@ -1,45 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import matter from 'gray-matter';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import useSEO from '../hooks/useSEO';
+import { getPostBySlug } from '../lib/blogPosts';
+
+const SITE_URL = 'https://saurav-portfolio.in';
 
 const BlogPost = () => {
     const { slug } = useParams();
-    const [content, setContent] = useState('');
-    const [meta, setMeta] = useState({});
+    const post = getPostBySlug(slug);
+    const meta = post || {};
+    const content = post ? post.content : '# Post not found';
+
+    const jsonLd = useMemo(() => {
+        if (!post) return null;
+        const url = `${SITE_URL}/blogs/${slug}`;
+        return {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.date,
+            dateModified: post.date,
+            author: { '@type': 'Person', name: 'Saurav Kumar', url: SITE_URL },
+            publisher: { '@type': 'Person', name: 'Saurav Kumar' },
+            mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+            image: `${SITE_URL}/profile.jpg`,
+            keywords: post.category,
+        };
+    }, [post, slug]);
 
     useSEO({
         title: meta.title ? `${meta.title} — Saurav Kumar` : 'Writing — Saurav Kumar',
         description: meta.excerpt,
         path: `/blogs/${slug}`,
         type: 'article',
+        jsonLd,
     });
-
-    useEffect(() => {
-        const fetchPost = async () => {
-            try {
-                const modules = import.meta.glob('/src/content/blogs/*.md', { query: '?raw', import: 'default' });
-                const path = `/src/content/blogs/${slug}.md`;
-
-                if (modules[path]) {
-                    const rawContent = await modules[path]();
-                    const { data, content } = matter(rawContent);
-                    setMeta(data);
-                    setContent(content);
-                } else {
-                    setContent('# Post not found');
-                }
-            } catch (error) {
-                console.error('Error loading post:', error);
-                setContent('# Error loading post');
-            }
-        };
-
-        fetchPost();
-    }, [slug]);
 
     return (
         <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6 lg:px-8">

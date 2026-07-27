@@ -1,43 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import matter from 'gray-matter';
 import useSEO from '../hooks/useSEO';
+import { posts } from '../lib/blogPosts';
+
+const SITE_URL = 'https://saurav-portfolio.in';
+
+const blogsJsonLd = posts.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: 'Writing — Saurav Kumar',
+        url: `${SITE_URL}/blogs`,
+        author: { '@type': 'Person', name: 'Saurav Kumar', url: SITE_URL },
+        blogPost: posts.map((post) => ({
+            '@type': 'BlogPosting',
+            headline: post.title,
+            url: `${SITE_URL}/blogs/${post.slug}`,
+            datePublished: post.date,
+        })),
+    }
+    : null;
 
 const Blogs = () => {
-    const [posts, setPosts] = useState([]);
-
     useSEO({
         title: 'Writing — Saurav Kumar',
         description: 'Articles on Generative AI, recommendation systems, and machine learning engineering by Saurav Kumar.',
         path: '/blogs',
+        jsonLd: blogsJsonLd,
     });
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            const modules = import.meta.glob('/src/content/blogs/*.md', { query: '?raw', import: 'default' });
-            const loadedPosts = [];
-
-            for (const path in modules) {
-                const rawContent = await modules[path]();
-                const { data } = matter(rawContent);
-                const slug = path.split('/').pop().replace('.md', '');
-
-                loadedPosts.push({
-                    ...data,
-                    slug,
-                    path
-                });
-            }
-
-            // Sort by date descending
-            loadedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            setPosts(loadedPosts);
-        };
-
-        fetchPosts();
-    }, []);
 
     return (
         <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">

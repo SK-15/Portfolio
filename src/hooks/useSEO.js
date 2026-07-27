@@ -22,11 +22,27 @@ function setCanonical(href) {
     el.setAttribute('href', href);
 }
 
+function setJsonLd(data) {
+    let el = document.head.querySelector('script[data-seo-id="route-jsonld"]');
+    if (!data) {
+        if (el) el.remove();
+        return;
+    }
+    if (!el) {
+        el = document.createElement('script');
+        el.type = 'application/ld+json';
+        el.setAttribute('data-seo-id', 'route-jsonld');
+        document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(data);
+}
+
 /**
  * Per-route SEO for the SPA: keeps document.title, description,
- * canonical and OG/Twitter tags in sync with the current route.
+ * canonical, OG/Twitter tags and an optional JSON-LD block in sync
+ * with the current route.
  */
-export default function useSEO({ title, description, path = '/', type = 'website' }) {
+export default function useSEO({ title, description, path = '/', type = 'website', jsonLd = null }) {
     useEffect(() => {
         const url = SITE_URL + path;
 
@@ -43,5 +59,8 @@ export default function useSEO({ title, description, path = '/', type = 'website
         setMeta('property', 'og:url', url);
         setMeta('property', 'og:type', type);
         setCanonical(url);
-    }, [title, description, path, type]);
+        setJsonLd(jsonLd);
+
+        return () => setJsonLd(null);
+    }, [title, description, path, type, jsonLd]);
 }
