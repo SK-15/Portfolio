@@ -317,6 +317,26 @@ const ResumeSection = () => {
 const ProjectsSection = () => {
     const projects = [
         {
+            id: 'koda',
+            title: 'Koda — Developer Agent',
+            description: 'Self-hosted, multi-tenant AI coding agent built as a LangGraph loop with Postgres-checkpointed threads, human-in-the-loop approval gates, parallel worker agents, and multi-provider LLM routing with per-run cost budgets.',
+            tags: ['LangGraph', 'Agents', 'Postgres', 'WebSocket'],
+            image: null,
+            file: 'koda/agent.py',
+            github: 'https://github.com/SK-15/Koda',
+            demo: null
+        },
+        {
+            id: 'gpt',
+            title: 'GPT From Scratch',
+            description: 'Character-level, decoder-only Transformer hand-built in PyTorch — no nn.Transformer or Hugging Face. Grows from a bigram baseline to a 10.8M-parameter GPT that writes Shakespeare-style text.',
+            tags: ['PyTorch', 'Transformers', 'Self-Attention'],
+            image: null,
+            file: 'gpt/model.py',
+            github: 'https://github.com/SK-15/gpt',
+            demo: null
+        },
+        {
             id: 1,
             title: 'Case Chat | Docuswift',
             description: 'AI-powered chat system for legal documents using RAG pipeline on Azure Cognitive Search. Features optimized information extraction with curated prompts.',
@@ -355,7 +375,7 @@ const ProjectsSection = () => {
                     viewport={{ once: true, margin: '-80px' }}
                     className="text-center mb-16"
                 >
-                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// 3 shipped · 1 US patent filed</p>
+                    <p className="font-mono text-code-comment text-[13px] sm:text-sm mb-3">// 5 projects · 2 open source · 1 US patent filed</p>
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-ink">
                         Featured Projects
                     </h2>
@@ -372,11 +392,27 @@ const ProjectsSection = () => {
                             className="group bg-bg-card rounded-xl overflow-hidden border border-rule shadow-card hover:shadow-card-hover hover:border-accent/30 transition-all duration-300"
                         >
                             <div className="relative h-48 overflow-hidden bg-bg-muted">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                />
+                                {project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full flex flex-col bg-bg-warm">
+                                        <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-rule">
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#e06c5a]" aria-hidden />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#e0b44a]" aria-hidden />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#6b8c6e]" aria-hidden />
+                                            <span className="ml-2 font-mono text-[11px] text-ink-muted">{project.file}</span>
+                                        </div>
+                                        <div className="flex-1 flex items-center justify-center px-6">
+                                            <span className="font-display text-2xl font-semibold text-ink group-hover:text-accent transition-colors duration-300 text-center">
+                                                {project.title.split(' — ')[0]}
+                                            </span>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="p-6">
@@ -428,8 +464,8 @@ const MainPage = () => {
     return (
         <>
             <HomeSection />
-            <ResumeSection />
             <ProjectsSection />
+            <ResumeSection />
         </>
     );
 };

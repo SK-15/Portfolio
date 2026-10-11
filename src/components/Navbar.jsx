@@ -26,7 +26,7 @@ const Navbar = () => {
     useEffect(() => {
         if (!isMainPage) return;
 
-        const sections = ['home', 'resume', 'projects'];
+        const sections = ['home', 'projects', 'resume'];
         const observers = [];
 
         const callback = (entries) => {
@@ -66,8 +66,8 @@ const Navbar = () => {
 
     const links = [
         { name: 'Home', sectionId: 'home', icon: <User size={16} /> },
-        { name: 'Resume', sectionId: 'resume', icon: <FileText size={16} /> },
         { name: 'Projects', sectionId: 'projects', icon: <Code size={16} /> },
+        { name: 'Resume', sectionId: 'resume', icon: <FileText size={16} /> },
         { name: 'Blogs', path: '/blogs', icon: <BookOpen size={16} /> },
     ];
 
@@ -138,8 +138,8 @@ const Navbar = () => {
                 </button>
 
                 <a
-                    href="/Portfolio/Saurav_Kumar_GENAI_Resume.pdf"
-                    download="Saurav_Kumar_GENAI_Resume.pdf"
+                    href={`${import.meta.env.BASE_URL}Saurav_Kumar_Resume.pdf`}
+                    download="Saurav_Kumar_Resume.pdf"
                     className="inline-flex items-center gap-1.5 text-[13px] font-medium text-bg bg-ink px-[18px] py-2 rounded-sm tracking-wide transition-colors duration-200 hover:bg-accent"
                 >
                     <Download size={14} />
@@ -206,8 +206,8 @@ const Navbar = () => {
                             )
                         ))}
                         <a
-                            href="/Portfolio/Saurav_Kumar_GENAI_Resume.pdf"
-                            download="Saurav_Kumar_GENAI_Resume.pdf"
+                            href={`${import.meta.env.BASE_URL}Saurav_Kumar_Resume.pdf`}
+                            download="Saurav_Kumar_Resume.pdf"
                             className="flex items-center justify-center gap-2 mt-2 py-2.5 text-sm font-medium text-bg bg-ink rounded-sm hover:bg-accent transition-colors"
                             onClick={() => setIsOpen(false)}
                         >
